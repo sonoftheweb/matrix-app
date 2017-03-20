@@ -1,0 +1,28 @@
+<ion-content padding>
+  <div class="inside-content" [ngClass]="{'ntw':ntw}">
+    <div text-center><img src="assets/img/n1.png"></div>
+    <div text-center>
+      <h3>Network</h3>
+      <p>We are going to automatically determine if the device is connected to any network. Network will include mobile network or Wifi.</p>
+      <p>Ensure your device is connected via 2G, 3G, 4G or Wifi to the internet.</p>
+    </div>
+
+    <div text-center *ngIf="displayButton" class="ohno">
+      <h5>No network connection detected.</h5>
+      <small>If your device network connectivity is not enabled, please enable it now.</small>
+    </div>
+
+    <div text-center *ngIf="ntw" class="ohno">
+      <h5 style="color: #141414;">{{ ntwType }} Network detected!</h5>
+      Please wait ...
+    </div>
+
+    <div text-center class="button-center" *ngIf="displayButton">
+      <button ion-button full small color="dark" round (click)="nextStage()">Next stage</button>
+    </div>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

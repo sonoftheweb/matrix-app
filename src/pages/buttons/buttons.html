@@ -1,0 +1,32 @@
+<ion-content padding>
+  <div text-center><img src="assets/img/b1.png"></div>
+  <div text-center>
+    <h3>Buttons</h3>
+    <p>These are the hardware buttons as found on the devices.</p>
+  </div>
+
+  <ion-grid>
+    <ion-row radio-group [(ngModel)]="hdwButtons">
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-radio value="excellent" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>Excellent</h6>
+      </ion-col>
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-radio value="stiff" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>Stiff</h6>
+      </ion-col>
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-radio value="broken" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>Bad</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div text-center class="button-center">
+    <button ion-button full color="dark" round *ngIf="displayButton" (click)="nextStage()">Next stage</button>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-content padding>
+
+  <div text-center><img src="assets/img/a2.png"></div>
+  <div text-center>
+    <h3>Accessories</h3>
+    <p>We would like to know if there are new accessories purchased for this device. For any accessory to be accepted, we do require it to be authentic and from the same manufacturer as your device.</p>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-checkbox (ionChange)="onSel()" color="dark" [(ngModel)]="newHeadset"></ion-checkbox>
+        <h6>New Headset</h6>
+      </ion-col>
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-checkbox (ionChange)="onSel()" color="dark" [(ngModel)]="newCharger"></ion-checkbox>
+        <h6>New Charger</h6>
+      </ion-col>
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-checkbox (ionChange)="onSel()" color="dark" [(ngModel)]="newCase"></ion-checkbox>
+        <h6>New Case</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div text-center class="button-center">
+    <button ion-button full color="dark" round (click)="nextStage()">Next stage</button>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

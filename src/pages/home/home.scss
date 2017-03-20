@@ -1,0 +1,22 @@
+.page-home {
+  background: url("../assets/img/phone.png");
+  background-size: cover;
+  .p1{
+    margin-top: 15vh;
+    text-align: center;
+    img{
+      width: 50%;
+      height: auto;
+    }
+  }
+  .device_detais{
+    margin-top: 40px;
+    text-align: center;
+    p{
+      line-height: 21px;
+    }
+    button{
+      margin-top: 25px;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<ion-content padding>
+  <div text-center><img src="assets/img/a1.png"></div>
+  <div text-center>
+    <h3>Device Age</h3>
+    <p>How long have you had your device for?</p>
+  </div>
+
+  <ion-grid>
+    <ion-row radio-group [(ngModel)]="device_age">
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-radio value="1" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>A week</h6>
+      </ion-col>
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-radio value="4" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>A month</h6>
+      </ion-col>
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-radio value="5" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>A month +</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <div text-center class="button-center">
+    <button ion-button full color="dark" round *ngIf="displayButton" (click)="nextStage()">Next stage</button>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

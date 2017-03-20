@@ -1,0 +1,37 @@
+<ion-content padding>
+  <div text-center><img src="assets/img/k1.png"></div>
+  <div text-center>
+    <h3>Keypad</h3>
+    <p>The keypad or keyboard is the hardware on your device that acts as an input device for text related inputs.</p>
+  </div>
+
+  <ion-grid *ngIf="!noKeyboard">
+    <ion-row radio-group [(ngModel)]="keyboard">
+      <ion-col width-33 text-center>
+        <ion-radio value="excellent" class="casing-check" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>Excellent</h6>
+      </ion-col>
+      <ion-col width-33text-center>
+        <ion-radio value="unstable" class="casing-check" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>Unstable</h6>
+      </ion-col>
+      <ion-col width-33text-center>
+        <ion-radio value="broken" class="casing-check" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>Broken</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="noKeyboard" text-center>
+    <h5>This looks to us like this device does not have a keypad.</h5>
+    <p><small>Please wait...</small></p>
+  </div>
+
+  <div text-center class="button-center">
+    <button ion-button full color="dark" round *ngIf="displayButton" (click)="nextStage()">Next stage</button>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-content padding>
+  <div text-center><img src="assets/img/v1.png"></div>
+  <div text-center>
+    <h3>Vibrations</h3>
+    <p>The nifty little vibrate feature on your device is what we are referring to here. We would like to test your device's ability to vibrate. This would be useful in times when you have an in-coming call or a notification.</p>
+    <p>For this test, you would have to keep the device on a flat surface.</p>
+  </div>
+
+  <div *ngIf="vibrated" text-center style="margin-top:15px;">
+    <h5>Vibration detected!</h5>
+    <small>Please wait...</small>
+  </div>
+
+  <div *ngIf="!flat" text-center style="margin-top:15px;">
+    <h6>Place the device flat on the table and wait for the test button. Make sure the device is as still as possible.</h6>
+  </div>
+  <div *ngIf="flat && !vibrated" text-center class="button-center" style="margin-top:15px;">
+    <button ion-button full color="dark" round (click)="runVibrate()">Run Vibration</button>
+  </div>
+  <div *ngIf="rerun" text-center class="button-center" style="margin-top:15px;">
+    <small>Vibration not detected</small>
+    <button ion-button full color="dark" round *ngIf="displayButton" (click)="nextStage()">Next stage</button>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

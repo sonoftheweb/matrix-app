@@ -1,0 +1,27 @@
+<ion-content padding>
+  <div text-center><img src="assets/img/t1.png"></div>
+  <div text-center>
+    <h2>Let's talk screens</h2>
+    <p>We would like to know if the screen is optimal and works perfectly. That way we may schedule repairs before the trade-off.</p>
+  </div>
+
+  <ion-list>
+    <ion-item text-wrap>
+      <ion-label><strong>My screen is cracked.</strong> <br/><small><i>This is true if there is a visible crack on the screen, even if you are able to use the touch screen features.</i></small></ion-label>
+      <ion-toggle [(ngModel)]="screenCracked" (ionChange)="updateIsCracked(screenCracked)" color="secondary"></ion-toggle>
+    </ion-item>
+    <ion-item text-wrap *ngIf="!screenCracked">
+      <ion-label><strong>Touch Screen working.</strong> <br/><small><i>This is true if the screen's touch feature works irrespective of whether the screen is cracked or not.</i></small></ion-label>
+      <ion-toggle [(ngModel)]="screenTouch" color="secondary"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <div text-center>
+    <button ion-button color="dark" round *ngIf="screenCracked || !screenTouch" (click)="nextStage()">Next</button>
+    <button ion-button full color="dark" round *ngIf="!screenCracked && screenTouch" (click)="screen2()">Lets test the screen</button>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

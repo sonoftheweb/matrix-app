@@ -1,0 +1,37 @@
+<ion-content padding>
+  <div text-center><img src="assets/img/c3.png"></div>
+  <div text-center>
+    <h3>Camera Glass</h3>
+    <p>This is the protective glass right in front of the camera. In some cases, this glass may offer some enhancement to picture quality.</p>
+  </div>
+
+  <ion-grid *ngIf="hasCamera">
+    <ion-row radio-group [(ngModel)]="camGlass">
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-radio value="excellent" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>Excellent</h6>
+      </ion-col>
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-radio value="cracked" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>Cracked</h6>
+      </ion-col>
+      <ion-col width-33 class="casing-check" text-center>
+        <ion-radio value="broken" (ionSelect)="onSel()" mode="md" color="dark"></ion-radio>
+        <h6>Broken</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="!hasCamera" text-center>
+    <h5>Your device does not seem to have a valid camera.</h5>
+    <p><small>Please wait...</small></p>
+  </div>
+
+  <div text-center class="button-center">
+    <button ion-button full color="dark" round *ngIf="displayButton" (click)="nextStage()">Next stage</button>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

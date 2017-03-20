@@ -1,0 +1,29 @@
+<ion-content padding>
+  <div text-center><img src="assets/img/c3.png"></div>
+  <div text-center>
+    <h3>Camera</h3>
+    <p>Most mobile devices come equipped with a camera on either sides of the device (front or back).</p>
+    <p>Perform the tests to prove that your device has a working camera. Take a selfie! This will validate you as the owner of the device.</p>
+    <h5 *ngIf="!hasCamera">Your device does not seem to have a valid camera.</h5>
+    <p *ngIf="!hasCamera"><small>Please wait...</small></p>
+  </div>
+  <div *ngIf="proofTaken" text-center>
+    <img src="{{ base64Image }}" />
+    <br/>
+    <small>Please wait...</small>
+  </div>
+  <div *ngIf="hasCamera && !proofTaken" class="button-center">
+    <button ion-button full icon-left color="dark" round (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+      Say Cheese!
+    </button>
+  </div>
+  <div *ngIf="error" class="button-center">
+    <h5>Unable to reconcile image</h5>
+    <button ion-button full color="dark" round (click)="nextStage()">Next Stage</button>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

@@ -1,0 +1,199 @@
+<ion-content padding>
+  <h4 text-center *ngIf="!show_success">Summary</h4>
+  <p *ngIf="!hide_summary">Here is a quick recap of your device details. Please note that your device is subject to more tests in these areas and more on submission at the swap center.</p>
+  <small *ngIf="!hide_summary">By submitting this entry, you agree to our terms and conditions. We reserve the right to decline swap services or any other service we render based on any criteria we deem fit.</small>
+
+  <ion-list no-border *ngIf="!hide_summary">
+
+    <ion-item>
+      <!--<ion-icon name='eye' item-left></ion-icon>-->
+      Screen
+      <ion-note item-right>
+        {{ screen }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <!--<ion-icon name='eye' item-left></ion-icon>-->
+      Casing
+      <ion-note item-right>
+        {{ casing }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <!--<ion-icon name='eye' item-left></ion-icon>-->
+      Audio Adapter
+      <ion-note item-right>
+        {{ headset }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <!--<ion-icon name='eye' item-left></ion-icon>-->
+      Earpiece
+      <ion-note item-right>
+        {{ earpiece }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <!--<ion-icon name='eye' item-left></ion-icon>-->
+      Mouthpiece
+      <ion-note item-right>
+        {{ mouthpiece }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <!--<ion-icon name='eye' item-left></ion-icon>-->
+      Network (Adapter)
+      <ion-note item-right>
+        {{ network }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{ cameraProof }}">
+      </ion-avatar>
+      Camera
+      <ion-note item-right>
+        {{ camera }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Camera Glass
+      <ion-note item-right>
+        {{ camera_glass }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Hardware Buttons
+      <ion-note item-right>
+        {{ hardware_buttons }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Battery
+      <ion-note item-right>
+        {{ batteries }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Vibration
+      <ion-note item-right>
+        {{ vibrate }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Temperature
+      <ion-note item-right>
+        {{ temperature }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Charger Port
+      <ion-note item-right>
+        {{ charge }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Fingerprint
+      <ion-note item-right>
+        {{ fingerprint }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Device Age
+      <ion-note item-right>
+        {{ device_age }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      New Headset
+      <ion-icon *ngIf="new_headset == '1'" color="secondary" name="checkmark" item-right></ion-icon>
+      <ion-icon *ngIf="new_headset != '1'" color="danger" name="close" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      New Charger
+      <ion-icon *ngIf="new_charger == '1'" color="secondary" name="checkmark" item-right></ion-icon>
+      <ion-icon *ngIf="new_charger != '1'" color="danger" name="close" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      New Case
+      <ion-icon *ngIf="new_case == '1'" color="secondary" name="checkmark" item-right></ion-icon>
+      <ion-icon *ngIf="new_case != '1'" color="danger" name="close" item-right></ion-icon>
+    </ion-item>
+
+  </ion-list>
+
+  <div *ngIf="!hide_summary" text-center>
+    <button ion-button small color="dark" round (click)="backToBegining()">I am not sure, let me make changes</button>
+    <button ion-button color="dark" round (click)="doCalc()">Yep, this is it</button>
+  </div>
+
+  <div *ngIf="stat" text-center>
+    <p text-center>The evaluation is complete and your device is worth</p>
+    <h4 text-center [innerHTML]="price"></h4>
+    <!--<button ion-button color="secondary" (click)="continueSubmission()">Continue with Submission</button>-->
+  </div>
+
+  <div *ngIf="stat">
+    <form #loginCreds="ngForm" (ngSubmit)="continueSubmission()">
+      <ion-list>
+
+        <ion-item>
+          <ion-label floating>Name</ion-label>
+          <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Phone</ion-label>
+          <ion-input type="text" [(ngModel)]="phone" name="phone"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Location</ion-label>
+          <ion-input type="text" [(ngModel)]="location" name="location"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Comment</ion-label>
+          <ion-textarea [(ngModel)]="comment" name="comment"></ion-textarea>
+        </ion-item>
+
+      </ion-list>
+
+      <div padding>
+        <button full color="dark" round ion-button block>Continue with Submission</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="eval_failed" text-center>
+    <p text-center>Evaluation is complete but the pricing was too low to consider, either because device is too old or there are too many defects. If you still want to swap the device, please bring it to the service center.</p>
+    <button ion-button full color="dark" round (click)="goToHome()">End Evaluation</button>
+  </div>
+
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

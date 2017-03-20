@@ -1,0 +1,24 @@
+page-battery {
+  img{
+    width: 30vw;
+    height: auto;
+    margin: 5vh auto;
+  }
+  ion-grid{
+    margin: 30px 0 20px 0;
+  }
+  .radio-md .radio-icon{
+    width: 23px !important;
+    height: 23px !important;
+    border-width: 5px !important;
+    .radio-inner{
+      width: 9px !important;
+      height: 9px !important;
+    }
+  }
+  .button-center{
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

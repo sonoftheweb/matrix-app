@@ -1,0 +1,27 @@
+<ion-content padding>
+  <div class="inside-content" [ngClass]="{'charging':isCharging}">
+    <div text-center><img src="assets/img/c2.png"></div>
+    <div text-center>
+      <h3>Does it charge?</h3>
+      <p>We are going to automatically determine if the phone charges when connected via the charging port.</p>
+      <p>Plug in your device to the charging port. If it works, you will be redirected to the next step.</p>
+    </div>
+
+    <div text-center *ngIf="nextButton" class="ohno">
+      <h5>Charging not detected.</h5>
+    </div>
+
+    <div text-center *ngIf="isCharging" class="ohno">
+      <h5 style="color: #141414;">Charging detected!</h5>
+      Please wait ...
+    </div>
+
+    <div text-center class="button-center" *ngIf="nextButton">
+      <button ion-button full small color="dark" round (click)="nextStage()">Next stage</button>
+    </div>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

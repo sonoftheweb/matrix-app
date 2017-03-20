@@ -1,0 +1,26 @@
+<ion-content padding>
+  <div text-center><img src="assets/img/h1.png"></div>
+  <div text-center>
+    <h3>Headset anyone?</h3>
+    <p>This test serves not only to check if you have a valid headset but also to see if your device's audio jack works. Connect the headset and the app will do the rest.</p>
+    <p>Using the iPhone 7 wireless headset? No problem. The app should be able to detect that easily.</p>
+  </div>
+
+  <div text-center class="ohno">
+    <!--<button ion-button full color="primary" *ngIf="isHeadsetPlugged == '3'" (click)="setHeadSetDetected()">Detect Headphones</button>-->
+    <div *ngIf="isHeadsetPlugged == '1'">
+      <h4>Headset detected</h4>
+      <small>Please wait ...</small>
+    </div>
+    <div *ngIf="isHeadsetPlugged == '0'">
+      <h4>Headset not detected</h4>
+      <div text-center>
+        <button ion-button color="dark" round (click)="nextStage()">Audio jack not working</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>

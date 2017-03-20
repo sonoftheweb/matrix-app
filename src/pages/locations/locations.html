@@ -1,0 +1,27 @@
+<ion-content padding>
+  <div *ngIf="show_success">
+    <h4 text-center style="margin-top: 20px;">Well what are you waiting for?</h4>
+    <p text-center> Please visit our exchange centers to have your device swapped. Make sure to come with the actual device and accessories. Please note that the device will be tested at the location you visit.</p>
+    <br/>
+
+    <div text-center>
+      <button color="dark" round ion-button block (click)="goToHome()">End</button>
+    </div>
+
+    <br/>
+
+    <ion-card *ngFor="let shop of shops">
+      <ion-card-header>
+        {{ shop.store_name }}
+      </ion-card-header>
+      <ion-card-content>
+        {{ shop.store_address }}
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+  <div class="le-note">
+    <p>Matrix</p>
+  </div>
+</ion-content>
