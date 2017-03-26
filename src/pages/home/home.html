@@ -11,7 +11,7 @@
     <p *ngIf="is_android">Device IMEI: {{ imei }}</p>
     <button *ngIf="start_evaluation" ion-button color="dark" round (click)="start_eval()">Begin Evaluation</button>
     <p *ngIf="explain">
-      We do not seem to have your device model in our records. We cannot proceed with device evaluation.
+      {{ reason }}
     </p>
   </div>
 

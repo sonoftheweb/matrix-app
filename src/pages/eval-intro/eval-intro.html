@@ -9,19 +9,16 @@
 
 <ion-content padding class="page-eval-intro">
   <div class="m-t-b-40 text-center">
-    <h2>Ready to start evaluation?</h2>
+    <h2>Read before you start device evaluation!</h2>
     <h5 class="m-t-b-20">Here's all you need to know</h5>
 
     <img src="assets/img/e1.png">
 
-    <p>Each stage of the evaluation is meant to figure out if there are any issues with your device either manually or automatically.</p>
-    <p>You will be required to answer a few questions so please select the correct responses to ensure you get the right value for your device. Do note that the device will be tested by a representative to confirm your claims as true.</p>
+    <p>Each stage of the evaluation is designed to record issues with your device either manually or automatically.</p>
+    <p>Please note that a technical person shall verify your claims on all manual entries upon submission of your device.</p>
   </div>
   <div class="text-center">
-    <button ion-button color="dark" round (click)="nextStage()">Stage 1</button>
-    <br/>
-    <br/>
-    <button ion-button color="dark" round icon-left (click)="backToPrev()"><ion-icon name="arrow-back"></ion-icon>back</button>
+    <button ion-button color="dark" round (click)="backToPrev()">Cancel</button> <button ion-button color="dark" round (click)="nextStage()">I Agree</button>
   </div>
 
   <div class="le-note">

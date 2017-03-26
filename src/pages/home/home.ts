@@ -22,6 +22,7 @@ export class HomePage {
   hd: any;
   start_evaluation: boolean = false;
   explain: boolean = false;
+  reason: string;
 
   constructor(public navCtrl: NavController, public platform: Platform, public apicall: ApiCalls, public loadingCtrl: LoadingController) {
 
@@ -57,7 +58,7 @@ export class HomePage {
       loading.present();
 
 
-      this.apicall.apiCall('has/'+this.manufacturer)
+      this.apicall.apiCall('has/'+this.manufacturer+'/'+this.model)
         .then((data)=>{
           this.hd = data;
           if(this.hd.has_device == 1){
@@ -69,6 +70,7 @@ export class HomePage {
           }else{
             this.start_evaluation = false;
             this.explain = true;
+            this.reason = this.hd.reason;
             setTimeout(() => {
               loading.dismiss();
             }, 1000);

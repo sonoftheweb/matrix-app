@@ -2,9 +2,8 @@
   <div class="inside-content" [ngClass]="{'charging':isCharging}">
     <div text-center><img src="assets/img/c2.png"></div>
     <div text-center>
-      <h3>Does it charge?</h3>
-      <p>We are going to automatically determine if the phone charges when connected via the charging port.</p>
-      <p>Plug in your device to the charging port. If it works, you will be redirected to the next step.</p>
+      <h3>Charging Port Diagnostic</h3>
+      <p>Connect your device to a power source and wait for detection.</p>
     </div>
 
     <div text-center *ngIf="nextButton" class="ohno">

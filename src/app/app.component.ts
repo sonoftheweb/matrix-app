@@ -23,6 +23,9 @@ export class MyApp {
     ];
 
     this.platform.ready().then(() => {
+
+
+
       let subscription = BatteryStatus.onChange().subscribe(
         (status) => {
           if(status.isPlugged){
