@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-import {StatusBar, Splashscreen, BatteryStatus} from 'ionic-native';
+import {StatusBar, Splashscreen} from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 
 
@@ -23,18 +23,6 @@ export class MyApp {
     ];
 
     this.platform.ready().then(() => {
-
-
-
-      let subscription = BatteryStatus.onChange().subscribe(
-        (status) => {
-          if(status.isPlugged){
-            localStorage.setItem('charger','1');
-          }else{
-            localStorage.setItem('charger','0');
-          }
-        }
-      );
 
       /*(<any>window).cordova.plugins.headsetdetection.detect(function (detected) {
         alert("Headphone " + detected)

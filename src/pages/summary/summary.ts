@@ -118,7 +118,7 @@ export class SummaryPage {
       this.batteries = 'Swollen';
     }
 
-    if(localStorage.getItem('vibrate') == '3'){
+    if(localStorage.getItem('vibrate') == '1'){
       this.vibrate = 'Works';
     }
 

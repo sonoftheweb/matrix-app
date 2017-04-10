@@ -1,0 +1,16 @@
+/var/www/html/CrowdWakaApp-build/platforms/android/build/outputs/apk/android-release-unsigned.apk
+
+Data Generated from:
+keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+-->
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
+	for: CN=John Oko, OU=CrowdWaka, O=CrowdAfrica, L=Wuse Zone 6, ST=Abuja, C=NG
+
+Password: crowdafrica
+
+Do This:
+1. cordova plugin rm cordova-plugin-console
+2. cordova build --release android
+4. jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore matrix.keystore platforms/android/build/outputs/apk/android-release-unsigned.apk alias_name
+5. ~/Android/Sdk/build-tools/23.0.3/zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk matrix.apk
+

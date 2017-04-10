@@ -1,10 +1,10 @@
 <ion-content padding>
-  <div class="inside-content" [ngClass]="{'ntw':ntw}">
+  <div class="inside-content" [ngClass]="{'ntw':ntw,'nntw':nntw}">
     <div text-center><img src="assets/img/n1.png"></div>
     <div text-center>
-      <h3>Network</h3>
-      <p>We are going to automatically determine if the device is connected to any network. Network will include mobile network or Wifi.</p>
-      <p>Ensure your device is connected via 2G, 3G, 4G or Wifi to the internet.</p>
+      <h3>Network Diagnostic</h3>
+      <p>Ensure you are connected to either mobile network or wifi.</p>
+      <!--<p>Ensure your device is connected via 2G, 3G, 4G or Wifi to the internet.</p>-->
     </div>
 
     <div text-center *ngIf="displayButton" class="ohno">

@@ -42,8 +42,8 @@ export class LocationsPage {
     });
   }
 
-  goToHome(){
-    this.navCtrl.push(HomePage);
+  exitApp(){
+    navigator['app'].exitApp();
   }
 
 }

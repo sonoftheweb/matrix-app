@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import {NavController, AlertController, Platform} from 'ionic-angular';
+import {NavController, Platform} from 'ionic-angular';
 import { Network } from 'ionic-native';
-import {KeyboardPage} from "../keyboard/keyboard";
 import {CameraPage} from "../camera/camera";
 
 @Component({
@@ -13,9 +12,10 @@ export class NetworkPage {
   timer: any;
   displayButton: boolean = false;
   ntw: boolean = false;
+  nntw: boolean = false;
   ntwType: any;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public platform: Platform) {}
+  constructor(public navCtrl: NavController, public platform: Platform) {}
 
   ionViewDidLoad() {
     this.checkNetwork()
@@ -28,6 +28,7 @@ export class NetworkPage {
           if (Network.type != 'none') {
             localStorage.setItem('network', '1');
             this.ntw = true;
+            this.nntw = false;
             this.displayButton = false;
             this.ntwType = Network.type;
             setTimeout(()=>{
@@ -39,6 +40,7 @@ export class NetworkPage {
             localStorage.setItem('network', '0');
             this.displayButton = true;
             this.ntw = false;
+            this.nntw = true;
           }
         }, 2000);
       },5000);
@@ -47,6 +49,10 @@ export class NetworkPage {
 
   ionViewWillLeave() {
     clearInterval(this.timer);
+  }
+
+  nextStage(){
+    this.navCtrl.push(CameraPage);
   }
 
 }
