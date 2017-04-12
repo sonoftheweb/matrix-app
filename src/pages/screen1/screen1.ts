@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { Screen2Page } from '../screen2/screen2';
-import {CasingPage} from "../casing/casing";
 import {ChargingPage} from "../charging/charging";
 
 @Component({

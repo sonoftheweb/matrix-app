@@ -140,8 +140,8 @@
   </ion-list>
 
   <div *ngIf="!hide_summary" text-center>
-    <button ion-button small color="dark" round (click)="backToBegining()">I am not sure, let me make changes</button>
-    <button ion-button color="dark" round (click)="doCalc()">Yep, this is it</button>
+    <button ion-button color="dark" round (click)="backToBegining()">Modify</button>
+    <button ion-button color="dark" round (click)="doCalc()">Evaluate</button>
   </div>
 
   <div *ngIf="stat" text-center>
@@ -182,7 +182,7 @@
       </ion-list>
 
       <div padding>
-        <button full color="dark" round ion-button block>Continue with Submission</button>
+        <button *ngIf="!!location && !!phone && !!email && !!name" full color="dark" round ion-button block>Continue with Submission</button>
       </div>
     </form>
   </div>

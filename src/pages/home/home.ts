@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import {NavController, Platform, LoadingController} from 'ionic-angular';
+import {NavController, Platform, LoadingController, AlertController} from 'ionic-angular';
 import { Device } from 'ionic-native';
 import { EvalIntroPage } from '../eval-intro/eval-intro';
 import { ApiCalls } from "../../providers/api-calls";
+import {Diagnostic} from "@ionic-native/diagnostic";
 
 @Component({
   selector: 'page-home',
@@ -24,11 +25,25 @@ export class HomePage {
   explain: boolean = false;
   reason: string;
 
-  constructor(public navCtrl: NavController, public platform: Platform, public apicall: ApiCalls, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController,
+              public platform: Platform,
+              public apicall: ApiCalls,
+              public loadingCtrl: LoadingController,
+              private diagnostics: Diagnostic,
+              private alertCtrl: AlertController) {
 
     localStorage.clear();
 
     this.platform.ready().then(()=>{
+
+      //check if geolocation is enabled
+      diagnostics.isLocationEnabled().then((isavail) => {
+        if (!isavail){
+          this.presentConfirm();
+        }
+      });
+
+
       this.uuid = Device.uuid;
       this.model = Device.model;
       this.ost_ype = Device.platform;
@@ -92,6 +107,33 @@ export class HomePage {
         this.is_android = true;
       }
     },1000);*/
+  }
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Enable GPS',
+      message: 'To use this application you have to enable your GPS',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            this.platform.exitApp();
+          }
+        },
+        {
+          text: 'Continue',
+          handler: () => {
+            this.loadGPSSettings();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  loadGPSSettings(){
+    this.diagnostics.switchToLocationSettings();
   }
 
 }

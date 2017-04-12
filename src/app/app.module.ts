@@ -24,6 +24,7 @@ import { NewAccessoriesPage } from "../pages/new-accessories/new-accessories";
 import { SummaryPage } from "../pages/summary/summary";
 import {ApiCalls} from "../providers/api-calls";
 import {LocationsPage} from "../pages/locations/locations";
+import {Diagnostic} from "@ionic-native/diagnostic";
 
 @NgModule({
   declarations: [
@@ -80,6 +81,6 @@ import {LocationsPage} from "../pages/locations/locations";
     SummaryPage,
     LocationsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},ApiCalls]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},ApiCalls,Diagnostic]
 })
 export class AppModule {}

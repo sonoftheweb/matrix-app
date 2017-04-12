@@ -9,6 +9,7 @@ import {LocationsPage} from "../locations/locations";
   templateUrl: 'summary.html'
 })
 export class SummaryPage {
+
   screen: string = 'Bad';
   casing: string = 'Broken';
   charge: string = 'Bad';
@@ -45,12 +46,25 @@ export class SummaryPage {
   comment: string;
 
   shops: any;
+  show_submitbutton: boolean = false;
 
-  constructor(public navCtrl: NavController, public apicall: ApiCalls, public loadingCtrl: LoadingController) {}
+  constructor(public navCtrl: NavController, public apicall: ApiCalls, public loadingCtrl: LoadingController) {
+    if(!!this.name){
+      this.show_submitbutton = false;
+    }else if(!!this.email){
+      this.show_submitbutton = false;
+    }else if(!!this.phone){
+      this.show_submitbutton = false;
+    }else if(!!this.location){
+      this.show_submitbutton = false;
+    }else if(!!this.comment){
+      this.show_submitbutton = false;
+    }else{
+      this.show_submitbutton = true;
+    }
+  }
 
   ionViewDidLoad() {
-
-
 
     if(localStorage.getItem('screen') == '1'){
       this.screen = 'Excellent';
@@ -143,6 +157,21 @@ export class SummaryPage {
     this.new_headset = localStorage.getItem('new_headset');
     this.new_charger = localStorage.getItem('new_charger');
     this.new_case = localStorage.getItem('new_case');
+
+    if(!!this.name){
+      this.show_submitbutton = false;
+    }else if(!!this.email){
+      this.show_submitbutton = false;
+    }else if(!!this.phone){
+      this.show_submitbutton = false;
+    }else if(!!this.location){
+      this.show_submitbutton = false;
+    }else if(!!this.comment){
+      this.show_submitbutton = false;
+    }else{
+      this.show_submitbutton = true;
+    }
+
   }
 
   backToBegining(){
