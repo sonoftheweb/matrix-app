@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {NavController, LoadingController, Platform} from 'ionic-angular';
+import {NavController, LoadingController, Platform, AlertController} from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 import {ApiCalls} from "../../providers/api-calls";
+import {Diagnostic} from "@ionic-native/diagnostic";
 
 @Component({
   selector: 'page-locations',
@@ -12,7 +13,22 @@ export class LocationsPage {
   shops: any;
   show_success: boolean = false;
 
-  constructor(public navCtrl: NavController, public apicall: ApiCalls, public loadingCtrl: LoadingController, public platform: Platform) {}
+  constructor(public navCtrl: NavController,
+              public apicall: ApiCalls,
+              public loadingCtrl: LoadingController,
+              private diagnostics: Diagnostic,
+              public platform: Platform,
+              private alertCtrl: AlertController) {
+    this.platform.ready().then(()=> {
+
+      //check if geolocation is enabled
+      diagnostics.isLocationEnabled().then((isavail) => {
+        if (!isavail) {
+          this.presentConfirm();
+        }
+      });
+    });
+  }
 
   ionViewDidLoad() {
     this.getLocationsClosest();
@@ -41,6 +57,33 @@ export class LocationsPage {
         console.log('Error getting location', error);
       });
     });
+  }
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Enable GPS',
+      message: 'To use this application you have to enable your GPS',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            this.platform.exitApp();
+          }
+        },
+        {
+          text: 'Continue',
+          handler: () => {
+            this.loadGPSSettings();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  loadGPSSettings(){
+    this.diagnostics.switchToLocationSettings();
   }
 
   exitApp(){

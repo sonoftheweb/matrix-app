@@ -40,8 +40,8 @@ export class CameraPage {
       sourceType : Camera.PictureSourceType.CAMERA,
       allowEdit : false,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 200,
-      targetHeight: 200,
+      targetWidth: 300,
+      targetHeight: 300,
       saveToPhotoAlbum: false
     }).then((imageData) => {
       this.base64Image = "data:image/jpeg;base64," + imageData;

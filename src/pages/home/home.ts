@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import {NavController, Platform, LoadingController, AlertController} from 'ionic-angular';
+import {NavController, Platform, LoadingController} from 'ionic-angular';
 import { Device } from 'ionic-native';
 import { EvalIntroPage } from '../eval-intro/eval-intro';
 import { ApiCalls } from "../../providers/api-calls";
-import {Diagnostic} from "@ionic-native/diagnostic";
+
 
 @Component({
   selector: 'page-home',
@@ -12,6 +12,7 @@ import {Diagnostic} from "@ionic-native/diagnostic";
 export class HomePage {
   uuid: string;
   model: string;
+  market_name: string;
   ost_ype: string;
   os_version: string;
   manufacturer: string;
@@ -28,22 +29,12 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public platform: Platform,
               public apicall: ApiCalls,
-              public loadingCtrl: LoadingController,
-              private diagnostics: Diagnostic,
-              private alertCtrl: AlertController) {
+              public loadingCtrl: LoadingController
+             ) {
 
     localStorage.clear();
 
     this.platform.ready().then(()=>{
-
-      //check if geolocation is enabled
-      diagnostics.isLocationEnabled().then((isavail) => {
-        if (!isavail){
-          this.presentConfirm();
-        }
-      });
-
-
       this.uuid = Device.uuid;
       this.model = Device.model;
       this.ost_ype = Device.platform;
@@ -79,6 +70,8 @@ export class HomePage {
           if(this.hd.has_device == 1){
             this.start_evaluation = true;
             this.explain = false;
+            this.market_name = this.hd.device_market_name;
+            localStorage.setItem('market_name',this.hd.device_market_name);
             setTimeout(() => {
               loading.dismiss();
             }, 1000);
@@ -107,33 +100,6 @@ export class HomePage {
         this.is_android = true;
       }
     },1000);*/
-  }
-
-  presentConfirm() {
-    let alert = this.alertCtrl.create({
-      title: 'Enable GPS',
-      message: 'To use this application you have to enable your GPS',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            this.platform.exitApp();
-          }
-        },
-        {
-          text: 'Continue',
-          handler: () => {
-            this.loadGPSSettings();
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
-
-  loadGPSSettings(){
-    this.diagnostics.switchToLocationSettings();
   }
 
 }
