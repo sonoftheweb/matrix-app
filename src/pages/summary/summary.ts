@@ -211,7 +211,7 @@ export class SummaryPage {
         screen: parseInt(screen),
         casing: parseInt(casing),
         charger: parseInt(charger),
-      //headset: parseInt(headset),
+      headset: parseInt(headset),
         earpiece: parseInt(earpiece),
         mouthpiece: parseInt(mouthpiece),
        network: parseInt(network),
@@ -267,7 +267,7 @@ export class SummaryPage {
   continueSubmission(){
 
     let loading = this.loadingCtrl.create({
-      content: 'Calculating...'
+      content: 'Getting Locations...'
     });
 
     loading.present();
@@ -280,15 +280,15 @@ export class SummaryPage {
     let vibrate = localStorage.getItem('vibrate');
 
     let casing = localStorage.getItem('casing');
-      let earpiece = localStorage.getItem('earpiece');
-      let mouthpiece = localStorage.getItem('mouthpiece');
-      let keyboard = localStorage.getItem('keyboard');
-      let camera_glass = localStorage.getItem('camera_glass');
-      let hardware_buttons = localStorage.getItem('hardware_buttons');
-      let batteries = localStorage.getItem('batteries');
-      let temperature = localStorage.getItem('temperature');
-      let fingerprint = localStorage.getItem('fingerprint');
-      let device_age = localStorage.getItem('device_age');
+    let earpiece = localStorage.getItem('earpiece');
+    let mouthpiece = localStorage.getItem('mouthpiece');
+    let keyboard = localStorage.getItem('keyboard');
+    let camera_glass = localStorage.getItem('camera_glass');
+    let hardware_buttons = localStorage.getItem('hardware_buttons');
+    let batteries = localStorage.getItem('batteries');
+    let temperature = localStorage.getItem('temperature');
+    let fingerprint = localStorage.getItem('fingerprint');
+    let device_age = localStorage.getItem('device_age');
     let new_headset = localStorage.getItem('new_headset');
     let new_charger = localStorage.getItem('new_charger');
     let new_case = localStorage.getItem('new_case');
@@ -297,12 +297,13 @@ export class SummaryPage {
     let imei = localStorage.getItem('imei');
     let camera_proof = localStorage.getItem('camera_proof');
 
+    alert(imei);
 
     let obj = {
       screen: parseInt(screen),
       casing: parseInt(casing),
       charger: parseInt(charger),
-      //headset: parseInt(headset),
+      headset: parseInt(headset),
       earpiece: parseInt(earpiece),
       mouthpiece: parseInt(mouthpiece),
       network: parseInt(network),
@@ -330,7 +331,7 @@ export class SummaryPage {
       postcost: this.price,
     };
 
-    console.log(obj);
+    //console.log(obj);
 
     this.apicall.submitEvaluation(obj)
       .then(

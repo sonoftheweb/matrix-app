@@ -50,11 +50,20 @@ export class HomePage {
       localStorage.setItem('serial_number',this.serial_number);
 
       if(this.platform.is('android')) {
+        console.log('is_android');
         (<any>window).plugins.imeiplugin.getImei(imei => {
-          localStorage.setItem('imei',imei);
-          this.imei = localStorage.getItem('imei');
+          if(imei != ''){
+            localStorage.setItem('imei',imei);
+            this.imei = localStorage.getItem('imei');
+          }else{
+            localStorage.setItem('imei','01');
+            this.imei = 'IMEI not detected';
+          }
+
           this.is_android = true;
         });
+      }else{
+        console.log('is_not_android');
       }
 
       let loading = this.loadingCtrl.create({
@@ -83,6 +92,9 @@ export class HomePage {
               loading.dismiss();
             }, 1000);
           }
+        },
+        (err)=>{
+          alert('There seems to be an error caused by the server or your connection to the internet. Please try again. Err:'+err);
         });
 
     });

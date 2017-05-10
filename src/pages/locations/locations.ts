@@ -35,6 +35,7 @@ export class LocationsPage {
   }
 
   getLocationsClosest(){
+
     this.platform.ready().then(() => {
       let loading = this.loadingCtrl.create({
         content: 'Getting closest locations...'
@@ -42,7 +43,7 @@ export class LocationsPage {
 
       loading.present();
 
-      Geolocation.getCurrentPosition({enableHighAccuracy:false}).then((resp) => {
+      Geolocation.getCurrentPosition({enableHighAccuracy: false, timeout: 10000, maximumAge: 3000}).then((resp) => {
         console.log(resp.coords.latitude);
         console.log(resp.coords.longitude);
         this.apicall.apiCall('locations/'+resp.coords.latitude+'/'+resp.coords.longitude)
@@ -55,6 +56,14 @@ export class LocationsPage {
           })
       }).catch((error) => {
         console.log('Error getting location', error);
+        this.apicall.apiCall('locations/all')
+          .then((data)=>{
+          this.shops = data;
+          this.show_success = true;
+          setTimeout(() => {
+            loading.dismiss();
+          },1000);
+          })
       });
     });
   }
