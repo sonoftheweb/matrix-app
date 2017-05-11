@@ -297,7 +297,7 @@ export class SummaryPage {
     let imei = localStorage.getItem('imei');
     let camera_proof = localStorage.getItem('camera_proof');
 
-    alert(imei);
+    //alert(imei);
 
     let obj = {
       screen: parseInt(screen),

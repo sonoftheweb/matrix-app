@@ -150,27 +150,29 @@
     <!--<button ion-button color="secondary" (click)="continueSubmission()">Continue with Submission</button>-->
   </div>
 
+  <p>Please complete the mandatory fields to continue</p>
+
   <div *ngIf="stat">
     <form #loginCreds="ngForm" (ngSubmit)="continueSubmission()">
       <ion-list>
 
         <ion-item>
-          <ion-label floating>Name</ion-label>
+          <ion-label floating>Name <span class="color-red">*</span></ion-label>
           <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label floating>Email</ion-label>
+          <ion-label floating>Email <span class="color-red">*</span></ion-label>
           <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label floating>Phone</ion-label>
+          <ion-label floating>Phone <span class="color-red">*</span></ion-label>
           <ion-input type="text" [(ngModel)]="phone" name="phone"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label floating>Location</ion-label>
+          <ion-label floating>Location <span class="color-red">*</span></ion-label>
           <ion-input type="text" [(ngModel)]="location" name="location"></ion-input>
         </ion-item>
 
@@ -194,6 +196,6 @@
 
 
   <div class="le-note">
-    <p>Matrix</p>
+    <p>Matrix Deva</p>
   </div>
 </ion-content>
